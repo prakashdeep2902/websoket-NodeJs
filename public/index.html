@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat App</title>
+
+    <script src="/socket.io/socket.io.js"></script>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -59,24 +61,10 @@
       </div>
     </div>
 
-    <!-- <script>
-      const socket = new WebSocket("ws://localhost:3000"); // WebSocket connection to backend
-
-      socket.onmessage = function (event) {
-        const messageContainer = document.getElementById("messages");
-        const message = document.createElement("div");
-        message.textContent = event.data;
-        messageContainer.appendChild(message);
-        messageContainer.scrollTop = messageContainer.scrollHeight;
-      };
-
+    <script>
       function sendMessage() {
-        const input = document.getElementById("messageInput");
-        if (input.value.trim() !== "") {
-          socket.send(input.value);
-          input.value = "";
-        }
+        const socket = io();
       }
-    </script> -->
+    </script>
   </body>
 </html>
