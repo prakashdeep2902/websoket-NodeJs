@@ -62,8 +62,17 @@
     </div>
 
     <script>
+      const messageElement = document.getElementById("messages");
+      const socket = io();
+
+      socket.on("message", (message) => {
+        const p = document.createElement("p");
+        p.textContent = message;
+        messageElement.appendChild(p);
+      });
       function sendMessage() {
-        const socket = io();
+        const message = messageInput.value;
+        socket.emit("user-message", message);
       }
     </script>
   </body>

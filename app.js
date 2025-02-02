@@ -9,7 +9,10 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 io.on("connection", (socket) => {
-  console.log(`a new user has connected ${socket.id}`);
+  socket.on("user-message", (message) => {
+    console.log(`user message comming from UI ${message}`);
+    io.emit("message", message);
+  });
 });
 app.use(express.static(path.resolve("./public")));
 
